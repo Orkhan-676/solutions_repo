@@ -172,6 +172,113 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-3">Problem 3</h1>
+<h1 id="problem-3-trajectories-of-a-freely-released-payload-near-earth"><strong>Problem 3: Trajectories of a Freely Released Payload Near Earth</strong></h1>
+<hr/>
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>When a payload is released from a moving rocket near Earth, its trajectory is determined by:
+- <strong>Initial velocity</strong> (relative to Earth),
+- <strong>Altitude</strong> (distance from Earth's center),
+- <strong>Gravity</strong> (attractive force exerted by Earth).  </p>
+<p>Possible trajectories include:
+1. <strong>Elliptical Orbits</strong> (<span class="arithmatex">\( v &lt; v_2 \)</span>): If the payload remains gravitationally bound to Earth.
+2. <strong>Parabolic Escape</strong> (<span class="arithmatex">\( v = v_2 \)</span>): The minimum velocity needed to break free from Earth's gravity.
+3. <strong>Hyperbolic Trajectory</strong> (<span class="arithmatex">\( v &gt; v_2 \)</span>): If the payload completely escapes Earth's gravity.</p>
+<p><strong>Key Question:</strong><br/>
+How does the payload's initial velocity and release altitude determine whether it remains in orbit, falls back to Earth, or escapes? 🚀  </p>
+<hr/>
+<h2 id="2-theoretical-background"><strong>2. Theoretical Background</strong></h2>
+<h3 id="newtons-law-of-gravitation"><strong>Newton's Law of Gravitation</strong></h3>
+<p>The force acting on the payload due to Earth's gravity is:</p>
+<div class="arithmatex">\[
+F = \frac{GMm}{r^2}
+\]</div>
+<p>where:
+- <span class="arithmatex">\( G = 6.67430 \times 10^{-11} \)</span> m³/kg/s² (gravitational constant),
+- <span class="arithmatex">\( M = 5.972 \times 10^{24} \)</span> kg (Earth's mass),
+- <span class="arithmatex">\( r = R_E + h \)</span> is the payload’s distance from Earth’s center, where <span class="arithmatex">\( R_E = 6.371 \times 10^6 \)</span> m (Earth's radius) and <span class="arithmatex">\( h \)</span> is the altitude.</p>
+<hr/>
+<h3 id="equations-of-motion"><strong>Equations of Motion</strong></h3>
+<p>Newton’s second law gives us:</p>
+<div class="arithmatex">\[
+m \frac{d^2 \mathbf{r}}{dt^2} = -\frac{GMm}{r^2} \hat{r}
+\]</div>
+<p>which results in a <strong>two-body problem</strong> that needs numerical integration.</p>
+<h4 id="key-velocities"><strong>Key Velocities:</strong></h4>
+<ol>
+<li>
+<p><strong>Orbital Velocity</strong> (<span class="arithmatex">\( v_1 \)</span>):<br/>
+   [
+   v_1 = \sqrt{\frac{GM}{r}}
+   ]
+   The velocity required for a stable circular orbit.</p>
+</li>
+<li>
+<p><strong>Escape Velocity</strong> (<span class="arithmatex">\( v_2 \)</span>):<br/>
+   [
+   v_2 = \sqrt{\frac{2GM}{r}}
+   ]
+   The velocity required to escape Earth's gravitational pull.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="3-computational-simulation"><strong>3. Computational Simulation</strong></h2>
+<p>We'll use <strong>Runge-Kutta numerical integration</strong> to simulate payload motion in 2D.  </p>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h2 id="4-analysis-of-trajectories"><strong>4. Analysis of Trajectories</strong></h2>
+<p><strong>1. If <span class="arithmatex">\( v &lt; v_1 \)</span> (Suborbital) → Payload Falls Back to Earth:</strong><br/>
+- The payload follows a <strong>parabolic arc</strong>, reaching max altitude before reentering.
+- Example: <strong>Ballistic missiles, suborbital tourism (Blue Origin, Virgin Galactic).</strong> </p>
+<p><strong>2. If <span class="arithmatex">\( v = v_1 \)</span> (Circular Orbit) → Payload Stays in Orbit:</strong><br/>
+- The payload maintains a circular orbit around Earth.
+- Example: <strong>Satellites (ISS, GPS, Starlink).</strong> </p>
+<p><strong>3. If <span class="arithmatex">\( v_1 &lt; v &lt; v_2 \)</span> (Elliptical Orbit) → Payload in a Non-Circular Orbit:</strong><br/>
+- The payload follows an <strong>elliptical orbit</strong>, returning after each cycle.
+- Example: <strong>Molniya orbits, Hohmann transfer maneuvers.</strong> </p>
+<p><strong>4. If <span class="arithmatex">\( v = v_2 \)</span> (Escape Trajectory) → Payload Leaves Earth:</strong><br/>
+- The payload follows a <strong>parabolic trajectory</strong>, never returning.
+- Example: <strong>Space probes leaving Earth (Voyager, New Horizons).</strong> </p>
+<p><strong>5. If <span class="arithmatex">\( v &gt; v_2 \)</span> (Hyperbolic Escape) → Payload Leaves with Excess Speed:</strong><br/>
+- The payload follows a <strong>hyperbolic trajectory</strong>, escaping Earth's gravity.
+- Example: <strong>Interplanetary missions (Mars rovers, Europa Clipper).</strong> </p>
+<hr/>
+<h2 id="5-real-world-applications"><strong>5. Real-World Applications</strong></h2>
+<h3 id="1-satellite-deployment"><strong>1. Satellite Deployment</strong></h3>
+<ul>
+<li>The right <strong>initial velocity and angle</strong> ensure satellites enter stable orbits.</li>
+<li><strong>Low Earth Orbit (LEO):</strong> 300-2000 km altitude (ISS, Starlink).</li>
+<li><strong>Geostationary Orbit (GEO):</strong> 35,786 km altitude (Weather satellites).</li>
+</ul>
+<h3 id="2-spacecraft-reentry"><strong>2. Spacecraft Reentry</strong></h3>
+<ul>
+<li>If a payload <strong>loses velocity</strong>, it reenters Earth’s atmosphere.</li>
+<li><strong>Reentry capsules (Soyuz, Dragon, Orion) use heat shields to survive.</strong></li>
+</ul>
+<h3 id="3-interplanetary-missions"><strong>3. Interplanetary Missions</strong></h3>
+<ul>
+<li>Escape velocities determine if a spacecraft reaches the Moon, Mars, or beyond.</li>
+<li><strong>Gravity assists</strong> (e.g., slingshot around Jupiter) are used to save fuel.</li>
+</ul>
+<hr/>
+<h2 id="6-discussion-extensions"><strong>6. Discussion &amp; Extensions</strong></h2>
+<h3 id="limitations-of-the-model"><strong>Limitations of the Model</strong></h3>
+<ul>
+<li><strong>Does not include air resistance</strong> (important for reentry trajectories).</li>
+<li><strong>Assumes Earth is a perfect sphere</strong> (real gravity varies slightly).</li>
+<li><strong>No external forces</strong> (like solar radiation pressure or thruster burns).</li>
+</ul>
+<h3 id="future-extensions"><strong>Future Extensions</strong></h3>
+<ul>
+<li><strong>Include atmospheric drag</strong> for more accurate reentry calculations.</li>
+<li><strong>Three-body problem</strong> (Earth-Moon-Spacecraft interactions).</li>
+<li><strong>Simulate real mission trajectories</strong> (e.g., Apollo, Artemis, SpaceX launches).</li>
+</ul>
+<hr/>
+<h2 id="7-conclusion"><strong>7. Conclusion</strong></h2>
+<p>This problem demonstrates how initial velocity determines a payload’s fate:
+- <strong>Too slow → falls back to Earth</strong> 🌍.
+- <strong>Just right → stays in orbit</strong> 🛰️.
+- <strong>Fast enough → escapes Earth's gravity</strong> 🚀.</p>
+<p>Using <strong>numerical methods (Runge-Kutta)</strong>, we simulated different payload trajectories, visualizing their motion in space. This is <strong>crucial for satellite deployment, space station docking, and interplanetary travel.</strong></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

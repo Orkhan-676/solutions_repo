@@ -172,6 +172,56 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-simulating-the-effects-of-the-lorentz-force"><strong>Problem 1: Simulating the Effects of the Lorentz Force</strong></h1>
+<h2 id="motivation"><strong>Motivation</strong></h2>
+<p>The <strong>Lorentz force</strong> governs the motion of charged particles in electromagnetic fields. It is expressed as:<br/>
+[
+\mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
+]<br/>
+This force is crucial in <strong>particle accelerators, mass spectrometers, and plasma physics</strong>. By simulating it, we can visualize particle trajectories and explore its real-world applications.  </p>
+<hr/>
+<h2 id="theory"><strong>Theory</strong></h2>
+<h3 id="motion-in-a-uniform-magnetic-field"><strong>Motion in a Uniform Magnetic Field</strong></h3>
+<ul>
+<li>A charged particle moves in a <strong>circular</strong> or <strong>helical</strong> path.  </li>
+<li>The <strong>Larmor radius</strong> (cyclotron radius) is given by:<br/>
+  [
+  r_L = \frac{m v_{\perp}}{|q| B}
+  ]  </li>
+<li>The <strong>cyclotron frequency</strong> is:<br/>
+  [
+  \omega_c = \frac{|q| B}{m}
+  ]  </li>
+</ul>
+<h3 id="motion-in-electric-magnetic-fields"><strong>Motion in Electric &amp; Magnetic Fields</strong></h3>
+<ul>
+<li><strong>Parallel fields (<span class="arithmatex">\(\mathbf{E} \parallel \mathbf{B}\)</span>)</strong>: The particle accelerates linearly.  </li>
+<li><strong>Perpendicular fields (<span class="arithmatex">\(\mathbf{E} \perp \mathbf{B}\)</span>)</strong>: Leads to a <strong>drift motion</strong> with velocity:<br/>
+  [
+  v_d = \frac{E}{B}
+  ]  </li>
+</ul>
+<hr/>
+<h2 id="python-simulation"><strong>Python Simulation</strong></h2>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h2 id="results-discussion"><strong>Results &amp; Discussion</strong></h2>
+<ul>
+<li>The particle follows a <strong>helical path</strong> due to the Lorentz force.  </li>
+<li>Increasing <strong>magnetic field strength</strong> reduces the <strong>Larmor radius</strong>, making the spiral tighter.  </li>
+<li>Adding an <strong>electric field</strong> causes <strong>drift motion</strong> in a straight line.  </li>
+</ul>
+<h3 id="real-world-applications"><strong>Real-World Applications</strong></h3>
+<ul>
+<li><strong>Cyclotrons &amp; Synchrotrons</strong>: Use magnetic fields to accelerate charged particles.  </li>
+<li><strong>Mass Spectrometry</strong>: Separates ions based on their charge-to-mass ratio.  </li>
+<li><strong>Plasma Confinement</strong>: Magnetic fields contain plasma in <strong>fusion reactors</strong>.  </li>
+</ul>
+<hr/>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>This simulation provides insights into the <strong>motion of charged particles</strong> in electromagnetic fields. Future work can include:<br/>
+✅ <strong>Non-uniform magnetic fields</strong><br/>
+✅ <strong>Time-dependent fields</strong><br/>
+✅ <strong>Relativistic effects</strong></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

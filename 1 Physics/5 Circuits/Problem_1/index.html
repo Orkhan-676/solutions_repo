@@ -172,6 +172,57 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-equivalent-resistance-using-graph-theory"><strong>Problem 1: Equivalent Resistance Using Graph Theory</strong></h1>
+<h2 id="motivation"><strong>Motivation</strong></h2>
+<p>Calculating equivalent resistance in electrical circuits can be complex for large networks. Using <strong>graph theory</strong>, we can model circuits as graphs where:<br/>
+- <strong>Nodes</strong> represent junctions.<br/>
+- <strong>Edges</strong> represent resistors (weights = resistance values).  </p>
+<p>This method simplifies circuit analysis and enables automated calculations.  </p>
+<hr/>
+<h2 id="theory"><strong>Theory</strong></h2>
+<h3 id="series-and-parallel-resistance"><strong>Series and Parallel Resistance</strong></h3>
+<ul>
+<li><strong>Series:</strong> <span class="arithmatex">\( R_{\text{eq}} = R_1 + R_2 + ... + R_n \)</span> </li>
+<li><strong>Parallel:</strong> <span class="arithmatex">\( \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n} \)</span> </li>
+</ul>
+<h3 id="graph-based-approach"><strong>Graph-Based Approach</strong></h3>
+<ol>
+<li><strong>Build Graph:</strong> Represent resistors as weighted edges.  </li>
+<li><strong>Simplify Series Connections:</strong> Merge nodes with two connections.  </li>
+<li><strong>Simplify Parallel Connections:</strong> Replace multiple edges between two nodes with their equivalent resistance.  </li>
+<li><strong>Repeat Until One Resistance Remains.</strong><br/>
+<img alt="alt text" src="../image%20%281%29.png"/></li>
+</ol>
+<h2 id="example-cases"><strong>Example Cases</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Circuit Type</th>
+<th>Given Resistors</th>
+<th>Equivalent Resistance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Series</strong></td>
+<td>4Ω, 6Ω</td>
+<td>10Ω</td>
+</tr>
+<tr>
+<td><strong>Parallel</strong></td>
+<td>4Ω, 6Ω</td>
+<td>2.4Ω</td>
+</tr>
+<tr>
+<td><strong>Complex</strong></td>
+<td>Mixed</td>
+<td>Computed iteratively</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>Using <strong>graph theory</strong>, we can systematically compute <strong>equivalent resistance</strong> in complex circuits, making circuit analysis more efficient and scalable. 🚀</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

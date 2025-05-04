@@ -172,6 +172,99 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2-estimating-pi-using-monte-carlo-methods"><strong>Problem 2: Estimating <span class="arithmatex">\(\pi\)</span> using Monte Carlo Methods</strong></h1>
+<h2 id="motivation"><strong>Motivation</strong></h2>
+<p>Monte Carlo methods use randomness to solve numerical problems that might be deterministic in principle. One of the most famous applications of this technique is estimating the value of <strong><span class="arithmatex">\(\pi\)</span></strong> using <strong>geometric probability</strong>.  </p>
+<p>By randomly generating points in a defined space and analyzing their distribution, we can approximate <strong><span class="arithmatex">\(\pi\)</span></strong> in an intuitive and visually engaging way. This problem not only strengthens our understanding of probability and geometry but also highlights the <strong>efficiency and convergence</strong> of stochastic methods in numerical computing.  </p>
+<p>This problem consists of two approaches:<br/>
+1. <strong>Circle-based Monte Carlo estimation</strong> (using random points in a square).<br/>
+2. <strong>Buffon’s Needle problem</strong> (a probability-based geometric experiment).  </p>
+<hr/>
+<h1 id="part-1-estimating-pi-using-a-circle"><strong>Part 1: Estimating <span class="arithmatex">\(\pi\)</span> Using a Circle</strong></h1>
+<h2 id="theoretical-foundation"><strong>Theoretical Foundation</strong></h2>
+<p>A <strong>unit circle</strong> (radius <span class="arithmatex">\( r = 1 \)</span>) is <strong>inscribed</strong> in a square of side length <strong>2</strong>. The area of the circle is:<br/>
+[
+A_{\text{circle}} = \pi r^2 = \pi
+]<br/>
+The area of the square is:<br/>
+[
+A_{\text{square}} = 4
+]<br/>
+Since points are randomly placed inside the square, the probability of a point landing inside the circle is given by the ratio:<br/>
+[
+\frac{\text{Points inside the circle}}{\text{Total points generated}} \approx \frac{\pi}{4}
+]<br/>
+Thus, solving for <strong><span class="arithmatex">\(\pi\)</span></strong>:<br/>
+[
+\pi \approx 4 \times \frac{\text{Points inside the circle}}{\text{Total points generated}}
+]  </p>
+<h2 id="simulation"><strong>Simulation</strong></h2>
+<ol>
+<li>Generate random points <span class="arithmatex">\((x, y)\)</span> within a <strong>square</strong> of side length <strong>2</strong>.  </li>
+<li>Check if the points fall inside the <strong>unit circle</strong> using the condition:<br/>
+   [
+   x^2 + y^2 \leq 1
+   ]  </li>
+<li>Estimate <strong><span class="arithmatex">\(\pi\)</span></strong> based on the proportion of points inside the circle.  </li>
+</ol>
+<h2 id="python-implementation"><strong>Python Implementation</strong></h2>
+<p><img alt="alt text" src="../image-15.png"/></p>
+<h1 id="part-2-estimating-pi-using-buffons-needle"><strong>Part 2: Estimating <span class="arithmatex">\(\pi\)</span> Using Buffon’s Needle</strong></h1>
+<h2 id="theoretical-foundation_1"><strong>Theoretical Foundation</strong></h2>
+<p>Buffon’s Needle problem estimates <span class="arithmatex">\(\pi\)</span> using <strong>probability and geometry</strong>. A needle of length <strong><span class="arithmatex">\(L\)</span></strong> is dropped onto a plane with <strong>parallel lines</strong> spaced <strong><span class="arithmatex">\(d\)</span></strong> units apart.  </p>
+<p>If the needle <strong>crosses</strong> a line, the probability is related to <span class="arithmatex">\(\pi\)</span>:<br/>
+[
+P = \frac{2L}{\pi d}
+]<br/>
+Solving for <span class="arithmatex">\(\pi\)</span>:<br/>
+[
+\pi \approx \frac{2L}{d} \times \frac{\text{Total Drops}}{\text{Crossing Drops}}
+]  </p>
+<h3 id="simulation-steps"><strong>Simulation Steps</strong></h3>
+<ol>
+<li><strong>Drop</strong> a needle randomly on a plane.  </li>
+<li><strong>Check</strong> if it crosses a line using its position and angle.  </li>
+<li><strong>Estimate</strong> <span class="arithmatex">\(\pi\)</span> using the formula above.  </li>
+</ol>
+<h2 id="python-implementation_1"><strong>Python Implementation</strong></h2>
+<p><img alt="alt text" src="../image-16.png"/></p>
+<h1 id="comparison-conclusion"><strong>Comparison &amp; Conclusion</strong></h1>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Concept</strong></th>
+<th><strong>Accuracy</strong></th>
+<th><strong>Convergence Speed</strong></th>
+<th><strong>Computational Complexity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Circle-based Monte Carlo</td>
+<td>Random points in a square</td>
+<td>Good (<span class="arithmatex">\(\pm 0.01\)</span>)</td>
+<td>Faster</td>
+<td><span class="arithmatex">\(O(N)\)</span></td>
+</tr>
+<tr>
+<td>Buffon’s Needle</td>
+<td>Probability-based experiment</td>
+<td>Lower</td>
+<td>Slower</td>
+<td><span class="arithmatex">\(O(N)\)</span></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-takeaways"><strong>Key Takeaways</strong></h3>
+<p>✅ <strong>Monte Carlo methods provide a simple yet powerful approach to estimating <span class="arithmatex">\(\pi\)</span>.</strong><br/>
+✅ <strong>Circle method</strong> is easier to understand and <strong>faster to converge</strong> than Buffon’s Needle.<br/>
+✅ <strong>Buffon’s Needle</strong> is slower but connects <span class="arithmatex">\(\pi\)</span> to <strong>real-world probability experiments</strong>.<br/>
+✅ <strong>Both methods highlight how randomness can be used for numerical estimations</strong>.  </p>
+<p><strong>Extensions</strong><br/>
+🔹 <strong>Try different sampling techniques</strong> (e.g., importance sampling) for faster convergence.<br/>
+🔹 <strong>Explore other Monte Carlo applications</strong> in physics, finance, and AI.<br/>
+🔹 <strong>Optimize the simulation</strong> using parallel computing for large-scale computations.  </p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

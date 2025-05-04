@@ -48,6 +48,28 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#problem-1-investigating-the-range-as-a-function-of-the-angle-of-projection">Problem 1: Investigating the Range as a Function of the Angle of Projection</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#governing-equations-of-motion">Governing Equations of Motion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#effects-of-initial-conditions">Effects of Initial Conditions</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-analysis-of-the-range">2. Analysis of the Range</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-practical-applications">3. Practical Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-implementation-python-simulation">4. Implementation (Python Simulation)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-limitations-and-realistic-factors">5. Limitations and Realistic Factors</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -172,6 +194,71 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h3 id="problem-1-investigating-the-range-as-a-function-of-the-angle-of-projection">Problem 1: Investigating the Range as a Function of the Angle of Projection</h3>
+<hr/>
+<h2 id="1-theoretical-foundation"><strong>1. Theoretical Foundation</strong></h2>
+<h3 id="governing-equations-of-motion"><strong>Governing Equations of Motion</strong></h3>
+<p>Projectile motion follows Newton’s second law and is influenced by gravity. Assuming no air resistance, the motion can be decomposed into:</p>
+<ul>
+<li><strong>Horizontal motion (constant velocity):</strong>
+  [
+  x(t) = v_0 \cos(\theta) t
+  ]</li>
+<li><strong>Vertical motion (accelerated motion under gravity):</strong>
+  [
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+  ]</li>
+</ul>
+<p>where:
+- <span class="arithmatex">\( v_0 \)</span> is the initial velocity,
+- <span class="arithmatex">\( \theta \)</span> is the launch angle,
+- <span class="arithmatex">\( g \)</span> is gravitational acceleration (<span class="arithmatex">\(9.81 \text{ m/s}^2\)</span> on Earth),
+- <span class="arithmatex">\( t \)</span> is time.</p>
+<p>The projectile reaches the ground when <span class="arithmatex">\( y(t) = 0 \)</span>, solving for <span class="arithmatex">\( t \)</span>:</p>
+<div class="arithmatex">\[
+t = \frac{2 v_0 \sin(\theta)}{g}
+\]</div>
+<p>Substituting this into <span class="arithmatex">\( x(t) \)</span>, the range <span class="arithmatex">\( R \)</span> is:</p>
+<div class="arithmatex">\[
+R = \frac{v_0^2 \sin(2\theta)}{g}
+\]</div>
+<h3 id="effects-of-initial-conditions"><strong>Effects of Initial Conditions</strong></h3>
+<ul>
+<li>The maximum range occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span>.</li>
+<li>Increasing <span class="arithmatex">\( v_0 \)</span> increases <span class="arithmatex">\( R \)</span> quadratically.</li>
+<li>A larger <span class="arithmatex">\( g \)</span> (e.g., on Jupiter) decreases <span class="arithmatex">\( R \)</span>.</li>
+<li>Adding an initial height <span class="arithmatex">\( h \)</span> modifies the equation:</li>
+</ul>
+<div class="arithmatex">\[
+R = \frac{v_0 \cos(\theta)}{g} \left(v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh} \right)
+\]</div>
+<hr/>
+<h2 id="2-analysis-of-the-range"><strong>2. Analysis of the Range</strong></h2>
+<ul>
+<li>The function <span class="arithmatex">\( R = f(\theta) \)</span> follows a symmetric curve with a peak at <span class="arithmatex">\( 45^\circ \)</span>.</li>
+<li>Doubling <span class="arithmatex">\( v_0 \)</span> increases <span class="arithmatex">\( R \)</span> by a factor of 4.</li>
+<li>Gravity significantly affects the range in extraterrestrial environments.</li>
+</ul>
+<hr/>
+<h2 id="3-practical-applications"><strong>3. Practical Applications</strong></h2>
+<ul>
+<li><strong>Sports:</strong> Predicting the trajectory of balls in soccer, basketball, etc.</li>
+<li><strong>Engineering:</strong> Missile and projectile design.</li>
+<li><strong>Astrophysics:</strong> Spacecraft trajectory optimization.</li>
+</ul>
+<hr/>
+<h2 id="4-implementation-python-simulation"><strong>4. Implementation (Python Simulation)</strong></h2>
+<p><img alt="alt text" src="../image-9.png"/>
+<img alt="alt text" src="../image-11.png"/>
+<img alt="alt text" src="../image-12.png"/></p>
+<h2 id="5-limitations-and-realistic-factors"><strong>5. Limitations and Realistic Factors</strong></h2>
+<ul>
+<li><strong>Air resistance</strong>: Reduces range.</li>
+<li><strong>Wind effects</strong>: Alters trajectory.</li>
+<li><strong>Uneven terrain</strong>: Modifies impact position.</li>
+</ul>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>This analysis provides insight into how projectile range depends on the launch angle. While an idealized model suffices for many applications, real-world conditions require numerical simulations.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

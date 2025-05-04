@@ -172,6 +172,61 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-exploring-the-central-limit-theorem-through-simulations"><strong>Problem 1: Exploring the Central Limit Theorem through Simulations</strong></h1>
+<h2 id="motivation"><strong>Motivation</strong></h2>
+<p>The <strong>Central Limit Theorem (CLT)</strong> states that, regardless of the original population distribution, the <strong>sampling distribution of the sample mean</strong> approaches a <strong>normal distribution</strong> as the sample size increases. This principle is fundamental in <strong>statistics, quality control, and financial modeling</strong>.  </p>
+<hr/>
+<h2 id="theory"><strong>Theory</strong></h2>
+<ol>
+<li><strong>Population Distributions</strong>: We test CLT using different distributions:  </li>
+<li><strong>Uniform Distribution</strong> (equal probability for all values)  </li>
+<li><strong>Exponential Distribution</strong> (skewed, represents waiting times)  </li>
+<li>
+<p><strong>Binomial Distribution</strong> (discrete probability of successes in trials)  </p>
+</li>
+<li>
+<p><strong>Sampling Process</strong>:  </p>
+</li>
+<li>Draw random samples of different sizes (<span class="arithmatex">\(n=5, 10, 30, 50\)</span>).  </li>
+<li>Compute sample means.  </li>
+<li>
+<p>Repeat the process many times to form a <strong>sampling distribution</strong>.  </p>
+</li>
+<li>
+<p><strong>Expected Outcome</strong>:  </p>
+</li>
+<li>As <span class="arithmatex">\(n\)</span> increases, the <strong>sampling distribution of the mean</strong> should approximate a <strong>normal distribution</strong>, even if the original distribution was not normal.  </li>
+</ol>
+<hr/>
+<h2 id="python-simulation"><strong>Python Simulation</strong></h2>
+<p><img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../image-1.png"/>
+<img alt="alt text" src="../image-2.png"/>
+<img alt="alt text" src="../image-3.png"/>
+<img alt="alt text" src="../image-4.png"/>
+<img alt="alt text" src="../image-5.png"/>
+<img alt="alt text" src="../image-6.png"/>
+<img alt="alt text" src="../image-8.png"/>
+<img alt="alt text" src="../image-9.png"/>
+<img alt="alt text" src="../image-12.png"/>
+<img alt="alt text" src="../image-13.png"/>
+<img alt="alt text" src="../image-14.png"/></p>
+<h2 id="results-discussion"><strong>Results &amp; Discussion</strong></h2>
+<ul>
+<li><strong>Small sample sizes</strong> (<span class="arithmatex">\(n=5,10\)</span>): The sampling distribution still reflects some characteristics of the original population.  </li>
+<li><strong>Larger sample sizes</strong> (<span class="arithmatex">\(n=30,50\)</span>): The sampling distributions become <strong>approximately normal</strong>, regardless of the original population shape.  </li>
+<li><strong>Higher variance in the original population</strong> slows down convergence to normality.  </li>
+</ul>
+<h3 id="real-world-applications"><strong>Real-World Applications</strong></h3>
+<p>✅ <strong>Quality Control</strong>: Used in manufacturing to assess product consistency.<br/>
+✅ <strong>Finance &amp; Risk Management</strong>: Predicts stock returns and economic trends.<br/>
+✅ <strong>Medical Research</strong>: Enables population-based inferences from sample studies.  </p>
+<hr/>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>This simulation demonstrates <strong>CLT in action</strong>, showing how sample size affects the normality of the sample mean distribution. Future work could explore:<br/>
+✅ <strong>Different population distributions</strong> (e.g., heavy-tailed)<br/>
+✅ <strong>Impact of sample variance</strong> on convergence<br/>
+✅ <strong>Confidence intervals &amp; hypothesis testing</strong> using CLT</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

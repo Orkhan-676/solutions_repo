@@ -172,6 +172,76 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2-investigating-the-dynamics-of-a-forced-damped-pendulum"><strong>Problem 2: Investigating the Dynamics of a Forced Damped Pendulum</strong></h1>
+<hr/>
+<h2 id="1-theoretical-foundation"><strong>1. Theoretical Foundation</strong></h2>
+<h3 id="governing-equation"><strong>Governing Equation</strong></h3>
+<p>The motion of a forced damped pendulum is described by the nonlinear differential equation:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \sin\theta = A \cos(\omega t)
+\]</div>
+<p>where:
+- <span class="arithmatex">\( \theta \)</span> is the angular displacement,
+- <span class="arithmatex">\( \gamma \)</span> is the damping coefficient,
+- <span class="arithmatex">\( \omega_0^2 = g/L \)</span> is the natural frequency squared (<span class="arithmatex">\( L \)</span> is the pendulum length, <span class="arithmatex">\( g \)</span> is gravity),
+- <span class="arithmatex">\( A \)</span> is the amplitude of the external driving force,
+- <span class="arithmatex">\( \omega \)</span> is the driving frequency.</p>
+<h3 id="small-angle-approximation"><strong>Small-Angle Approximation</strong></h3>
+<p>For small angles (<span class="arithmatex">\( \theta \approx \sin\theta \)</span>), the equation simplifies to:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \omega_0^2 \theta = A \cos(\omega t)
+\]</div>
+<p>This is a <strong>driven damped harmonic oscillator</strong>, which exhibits:
+1. <strong>Underdamped oscillations</strong> when <span class="arithmatex">\( \gamma \)</span> is small.
+2. <strong>Overdamped behavior</strong> when <span class="arithmatex">\( \gamma \)</span> is large.
+3. <strong>Resonance</strong> when <span class="arithmatex">\( \omega \approx \omega_0 \)</span>.</p>
+<p>For large angles, the full nonlinear equation must be solved numerically.</p>
+<hr/>
+<h2 id="2-analysis-of-dynamics"><strong>2. Analysis of Dynamics</strong></h2>
+<p>Key parameters affecting behavior:
+- <strong>Damping (<span class="arithmatex">\( \gamma \)</span>)</strong>: Higher damping leads to faster energy dissipation.
+- <strong>Driving force (<span class="arithmatex">\( A \)</span>)</strong>: Affects amplitude and introduces chaos.
+- <strong>Driving frequency (<span class="arithmatex">\( \omega \)</span>)</strong>: At resonance, the pendulum absorbs maximum energy.</p>
+<h3 id="chaos-and-periodicity"><strong>Chaos and Periodicity</strong></h3>
+<ul>
+<li>For small <span class="arithmatex">\( A \)</span> and moderate damping, the motion is <strong>periodic</strong>.</li>
+<li>Increasing <span class="arithmatex">\( A \)</span> or changing <span class="arithmatex">\( \omega \)</span> leads to <strong>quasiperiodic or chaotic motion</strong>.</li>
+<li>The transition from <strong>regular to chaotic motion</strong> can be observed using <strong>phase portraits</strong> and <strong>Poincaré sections</strong>.</li>
+</ul>
+<hr/>
+<h2 id="3-practical-applications"><strong>3. Practical Applications</strong></h2>
+<ul>
+<li><strong>Energy Harvesting</strong>: Devices that convert oscillations into electricity.</li>
+<li><strong>Suspension Bridges</strong>: Resonance effects can lead to structural collapse (e.g., Tacoma Narrows Bridge).</li>
+<li><strong>Human Gait Analysis</strong>: Biomechanical models use forced oscillators to study locomotion.</li>
+</ul>
+<hr/>
+<h2 id="4-implementation-python-simulation"><strong>4. Implementation (Python Simulation)</strong></h2>
+<p>We solve the nonlinear differential equation numerically using the <strong>Runge-Kutta method</strong>.</p>
+<p><img alt="alt text" src="../image-5.png"/>
+<img alt="alt text" src="../image-7.png"/></p>
+<h3 id="further-visualization"><strong>Further Visualization</strong></h3>
+<ul>
+<li><strong>Phase portraits</strong>: <span class="arithmatex">\( \theta \)</span> vs. <span class="arithmatex">\( \dot{\theta} \)</span> (angular velocity).</li>
+<li><strong>Poincaré sections</strong>: Sampled points to reveal chaotic behavior.</li>
+<li><strong>Bifurcation diagrams</strong>: Show transition to chaos.</li>
+</ul>
+<hr/>
+<h2 id="5-discussion-and-extensions"><strong>5. Discussion and Extensions</strong></h2>
+<h3 id="limitations"><strong>Limitations</strong></h3>
+<ul>
+<li><strong>Small-angle approximation</strong> is only valid for small oscillations.</li>
+<li><strong>Neglects air resistance</strong> and <strong>rope flexibility</strong>.</li>
+</ul>
+<h3 id="extensions"><strong>Extensions</strong></h3>
+<ul>
+<li><strong>Nonlinear damping</strong> (e.g., quadratic drag).</li>
+<li><strong>Non-periodic driving forces</strong> (e.g., stochastic forces).</li>
+<li><strong>Coupled pendulums</strong> for more complex behavior.</li>
+</ul>
+<hr/>
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>This study explores how a forced damped pendulum transitions from periodic motion to chaos. The Python model provides numerical solutions, allowing us to analyze resonance, phase transitions, and chaotic dynamics.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

@@ -172,6 +172,91 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-interference-patterns-on-a-water-surface"><strong>Problem 1: Interference Patterns on a Water Surface</strong></h1>
+<hr/>
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>Interference is a fundamental wave phenomenon that occurs when two or more waves overlap. On a water surface, ripples from multiple sources interact, creating patterns of constructive and destructive interference.  </p>
+<p>This problem explores <strong>wave interference from multiple point sources</strong>, arranged at the vertices of a <strong>regular polygon</strong>. The goal is to visualize and understand how the superposition of waves results in complex patterns.  </p>
+<hr/>
+<h2 id="2-theoretical-background"><strong>2. Theoretical Background</strong></h2>
+<h3 id="single-wave-equation"><strong>Single Wave Equation</strong></h3>
+<p>A circular wave propagating from a single point source located at <span class="arithmatex">\(\mathbf{r}_i\)</span> is given by:</p>
+<div class="arithmatex">\[
+y_i(\mathbf{r}, t) = A \cos(k d_i - \omega t + \phi)
+\]</div>
+<p>where:<br/>
+- <span class="arithmatex">\( A \)</span> = amplitude of the wave,<br/>
+- <span class="arithmatex">\( k = \frac{2\pi}{\lambda} \)</span> = wave number (related to wavelength <span class="arithmatex">\( \lambda \)</span>),<br/>
+- <span class="arithmatex">\( \omega = 2\pi f \)</span> = angular frequency (related to frequency <span class="arithmatex">\( f \)</span>),<br/>
+- <span class="arithmatex">\( d_i = |\mathbf{r} - \mathbf{r}_i| \)</span> = distance from source <span class="arithmatex">\( i \)</span> to point <span class="arithmatex">\( \mathbf{r} \)</span>,<br/>
+- <span class="arithmatex">\( \phi \)</span> = initial phase of the wave.  </p>
+<hr/>
+<h3 id="superposition-of-multiple-waves"><strong>Superposition of Multiple Waves</strong></h3>
+<p>If there are <span class="arithmatex">\( N \)</span> sources, each emitting a wave, the total displacement at a point <span class="arithmatex">\( \mathbf{r} \)</span> is:</p>
+<div class="arithmatex">\[
+y(\mathbf{r}, t) = \sum_{i=1}^{N} A \cos(k d_i - \omega t + \phi)
+\]</div>
+<p>This sum determines the <strong>interference pattern</strong> on the water surface.  </p>
+<ul>
+<li><strong>Constructive Interference</strong>: Occurs when waves add up (<span class="arithmatex">\( \Delta \phi = 0, 2\pi, 4\pi, ... \)</span>).  </li>
+<li><strong>Destructive Interference</strong>: Occurs when waves cancel out (<span class="arithmatex">\( \Delta \phi = \pi, 3\pi, 5\pi, ... \)</span>).  </li>
+</ul>
+<p>By positioning sources at <strong>regular polygon vertices</strong>, we observe <strong>symmetrical patterns</strong> that depend on the number of sources.</p>
+<hr/>
+<h2 id="3-computational-simulation"><strong>3. Computational Simulation</strong></h2>
+<p>We will:<br/>
+- Choose a <strong>regular polygon</strong> (e.g., equilateral triangle, square, pentagon).<br/>
+- Generate waves from <strong>each vertex</strong> using the superposition principle.<br/>
+- Visualize <strong>constructive and destructive interference</strong> with color maps.</p>
+<h3 id="python-implementation"><strong>Python Implementation</strong></h3>
+<p><img alt="alt text" src="../image.png"/>
+<img alt="alt text" src="../image-2.png"/>
+<img alt="alt text" src="../image-3.png"/></p>
+<h2 id="4-analysis-of-interference-patterns"><strong>4. Analysis of Interference Patterns</strong></h2>
+<h3 id="1-triangle-n-3"><strong>1. Triangle (<span class="arithmatex">\(N = 3\)</span>)</strong></h3>
+<ul>
+<li>Forms a <strong>sixfold symmetric pattern</strong> with alternating bright and dark regions.  </li>
+<li>Strong central interference due to wave overlap.  </li>
+</ul>
+<h3 id="2-square-n-4"><strong>2. Square (<span class="arithmatex">\(N = 4\)</span>)</strong></h3>
+<ul>
+<li>Produces a <strong>checkerboard-like interference pattern</strong> with symmetry along diagonals.  </li>
+<li>Alternating constructive/destructive zones between sources.  </li>
+</ul>
+<h3 id="3-pentagon-n-5"><strong>3. Pentagon (<span class="arithmatex">\(N = 5\)</span>)</strong></h3>
+<ul>
+<li>Creates a more <strong>intricate star-like pattern</strong> due to additional wave interactions.  </li>
+<li>Shows radial symmetry with high interference at center.  </li>
+</ul>
+<hr/>
+<h2 id="5-real-world-applications"><strong>5. Real-World Applications</strong></h2>
+<ol>
+<li><strong>Water Waves</strong> 🌊  </li>
+<li>Explains <strong>ripples in ponds</strong> when multiple droplets fall.  </li>
+<li>
+<p>Helps in <strong>harbor design</strong> to reduce unwanted wave interference.  </p>
+</li>
+<li>
+<p><strong>Acoustics &amp; Sound Waves</strong> 🎶  </p>
+</li>
+<li>Used in <strong>concert hall design</strong> to optimize sound distribution.  </li>
+<li>
+<p>Explains <strong>noise cancellation</strong> in headphones.  </p>
+</li>
+<li>
+<p><strong>Optical Interference</strong> 🔬  </p>
+</li>
+<li>Similar principles apply to <strong>laser interferometry</strong> (LIGO for gravitational waves).  </li>
+<li>Used in <strong>holography</strong> and <strong>thin-film coatings</strong> for anti-reflective glass.  </li>
+</ol>
+<hr/>
+<h2 id="6-extensions-further-research"><strong>6. Extensions &amp; Further Research</strong></h2>
+<p>🔹 <strong>Varying Phase Differences:</strong> Explore how different initial phases <span class="arithmatex">\( \phi \)</span> change the patterns.<br/>
+🔹 <strong>Non-Coherent Sources:</strong> Introduce randomness in phase to simulate real-world variations.<br/>
+🔹 <strong>3D Simulations:</strong> Extend to surface ripples in <strong>fluid dynamics studies</strong>.  </p>
+<hr/>
+<h2 id="7-conclusion"><strong>7. Conclusion</strong></h2>
+<p>By simulating <strong>interference from multiple sources</strong>, we visualized <strong>wave superposition patterns</strong> for <strong>different regular polygons</strong>. These patterns reveal the beauty and complexity of wave physics, with applications in <strong>acoustics, optics, and engineering</strong>.  </p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
