@@ -352,7 +352,5 @@ This force is crucial in **particle accelerators, mass spectrometers, and plasma
 ---
 
 ## **Conclusion**  
-This simulation provides insights into the **motion of charged particles** in electromagnetic fields. Future work can include:  
-✅ **Non-uniform magnetic fields**  
-✅ **Time-dependent fields**  
-✅ **Relativistic effects**
+This simulation provides insight into the motion of charged particles under electromagnetic forces.
+Key dynamics such as **Larmor radius, helical paths, and drift velocity** illustrate fundamental principles behind real-world systems like accelerators and magnetic traps.
