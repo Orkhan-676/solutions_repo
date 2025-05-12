@@ -10,7 +10,7 @@ Through simulation, we visualize key physical behaviors such as **circular motio
 
 
 ## **Theoretical Background**
-## Lorentz Force Equation
+**Lorentz Force Equation**
 The force acting on a charged particle is defined by:
 
 
