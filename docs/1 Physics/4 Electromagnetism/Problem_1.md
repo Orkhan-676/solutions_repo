@@ -7,6 +7,116 @@ The **Lorentz force** governs how charged particles move in electric and magneti
 This problem investigates the motion of a single charged particle under various configurations of **electric** (𝐸) and **magnetic** (B) fields.
 Through simulation, we visualize key physical behaviors such as **circular motion, helical trajectories, and E×B drift.**
 
+
+
+2. Theoretical Background
+Lorentz Force Equation
+The force acting on a charged particle is defined by:
+\vec{F} = q(\vec{E} + \vec{v} \times \vec{B}) \
+
+𝐹
+⃗
+=
+𝑞
+(
+𝐸
+⃗
++
+𝑣
+⃗
+×
+𝐵
+⃗
+)
+F
+ =q( 
+E
+ + 
+v
+ × 
+B
+ )
+Where:
+
+𝑞
+q: particle charge (C)
+
+𝑣
+⃗
+v
+ : velocity vector of the particle
+
+𝐸
+⃗
+E
+ : electric field vector
+
+𝐵
+⃗
+B
+ : magnetic field vector
+
+From Newton’s second law:
+
+𝑎
+⃗
+=
+𝐹
+⃗
+𝑚
+a
+ = 
+m
+F
+ 
+​
+ 
+we can iteratively compute the particle’s velocity and position.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## **Motivation2**  
 The **Lorentz force** governs the motion of charged particles in electromagnetic fields. It is expressed as:  
 \[
