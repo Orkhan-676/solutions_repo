@@ -2,24 +2,24 @@
 # **Problem 1: Simulating the Effects of the Lorentz Force**  
 
 
-## **Introduction**
+## **1. Introduction**
 The **Lorentz force** governs how charged particles move in electric and magnetic fields, playing a central role in systems such as particle accelerators, mass spectrometers, and plasma traps.
 This problem investigates the motion of a single charged particle under various configurations of **electric** (𝐸) and **magnetic** (B) fields.
 Through simulation, we visualize key physical behaviors such as **circular motion, helical trajectories, and E×B drift.** 
 
 
 
-## **Theoretical Background**
+## **2. Theoretical Background**
 **Lorentz Force Equation**
 The force acting on a charged particle is defined by:
-
+                      
 
 Where:
 
 
 
 From Newton’s second law:
-
+\[\vec{a}= \frac{\vec{F}}{m}\]
 
 we can iteratively compute the particle’s velocity and position.
 
