@@ -259,7 +259,7 @@ B
  
 ​
  
-**Conclusion**
+## **Conclusion**
 This simulation provides insight into the motion of charged particles under electromagnetic forces.
 Key dynamics such as **Larmor radius, helical paths, and drift velocity** illustrate fundamental principles behind real-world systems like accelerators and magnetic traps.
 
