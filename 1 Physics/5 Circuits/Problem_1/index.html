@@ -88,15 +88,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#3-computational-algorithm">3. Computational Algorithm</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a>
+<li class="toctree-l3"><a class="reference internal" href="#3-python-implementation">3. Python Implementation</a>
 </li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#4-python-implementation">4. Python Implementation</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#5-example-analyses">5. Example Analyses</a>
+<li class="toctree-l3"><a class="reference internal" href="#4-example-analyses">4. Example Analyses</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#example-1-simple-series">Example 1: Simple Series</a>
 </li>
@@ -106,7 +100,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#6-performance-extensions">6. Performance &amp; Extensions</a>
+<li class="toctree-l3"><a class="reference internal" href="#5-performance-extensions">5. Performance &amp; Extensions</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#time-complexity">Time Complexity</a>
 </li>
@@ -114,9 +108,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#7-applications">7. Applications</a>
+<li class="toctree-l3"><a class="reference internal" href="#6-applications">6. Applications</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#8-conclusion">8. Conclusion</a>
+<li class="toctree-l3"><a class="reference internal" href="#7-conclusion">7. Conclusion</a>
 </li>
 </ul>
 </li>
@@ -239,16 +233,7 @@
   $$</p>
 <p>This approach can be applied iteratively until a single equivalent resistance remains between the source and sink nodes.</p>
 <hr/>
-<h3 id="3-computational-algorithm">3. Computational Algorithm</h3>
-<h4 id="overview">Overview</h4>
-<p>We'll develop an algorithm that:</p>
-<ul>
-<li>Builds a graph from the resistor network.</li>
-<li>Identifies and simplifies <strong>series</strong> and <strong>parallel</strong> patterns.</li>
-<li>Iteratively reduces the network to a single resistance between two terminals.</li>
-</ul>
-<hr/>
-<h3 id="4-python-implementation">4. Python Implementation</h3>
+<h3 id="3-python-implementation">3. Python Implementation</h3>
 <p>Below is a simplified implementation using Python and NetworkX:</p>
 <pre><code class="language-python">import networkx as nx
 
@@ -287,7 +272,7 @@ def calculate_equivalent_resistance(G, start, end):
     return G.edges[start, end]['resistance']
 </code></pre>
 <hr/>
-<h3 id="5-example-analyses">5. Example Analyses</h3>
+<h3 id="4-example-analyses">4. Example Analyses</h3>
 <h4 id="example-1-simple-series">Example 1: Simple Series</h4>
 <p><img alt="alt text" src="../image.png"/></p>
 <ul>
@@ -306,7 +291,7 @@ def calculate_equivalent_resistance(G, start, end):
 <li>Algorithm handles this iteratively.</li>
 </ul>
 <hr/>
-<h3 id="6-performance-extensions">6. Performance &amp; Extensions</h3>
+<h3 id="5-performance-extensions">5. Performance &amp; Extensions</h3>
 <h4 id="time-complexity">Time Complexity</h4>
 <ul>
 <li>Depends on the number of nodes and edges.</li>
@@ -319,14 +304,14 @@ def calculate_equivalent_resistance(G, start, end):
 <li>Add <strong>GUI or visualization</strong> using <code>matplotlib</code>.</li>
 </ul>
 <hr/>
-<h3 id="7-applications">7. Applications</h3>
+<h3 id="6-applications">6. Applications</h3>
 <ul>
 <li><strong>Circuit simulation tools</strong>: SPICE, LTSpice use similar graph-based simplifications.</li>
 <li><strong>Network analysis</strong> in microchip design.</li>
 <li><strong>Robust design</strong> in power grids, where equivalent impedance impacts performance.</li>
 </ul>
 <hr/>
-<h3 id="8-conclusion">8. Conclusion</h3>
+<h3 id="7-conclusion">7. Conclusion</h3>
 <p>We demonstrated how graph theory provides an elegant and scalable solution for calculating equivalent resistance. This method not only simplifies hand analysis but also lays the foundation for algorithmic simulations of real-world circuits, proving essential in modern electrical and computer engineering.</p>
 </div>
 </div><footer>
