@@ -43,40 +43,12 @@ We will:
 
 #### Python Implementation
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+![alt text](lorentz_simulation_3d.png)
 
-# Particle properties
-q = 1.6e-19       # Charge (Coulombs)
-m = 9.11e-31      # Mass (kg) - default is electron
-dt = 1e-11        # Time step (s)
-steps = 1000      # Number of steps
+![alt text](lorentz_simulation_crossed_fields.png)
 
-def simulate_lorentz_motion(v0, E, B, title="Lorentz Force Motion"):
-    r = np.zeros((steps, 3))
-    v = np.zeros((steps, 3))
-    v[0] = v0
+![alt text](lorentz_simulation_parallel_fields.png)
 
-    for i in range(steps - 1):
-        F = q * (E + np.cross(v[i], B))
-        a = F / m
-        v[i+1] = v[i] + a * dt
-        r[i+1] = r[i] + v[i+1] * dt
-
-    # Visualization
-    fig = plt.figure(figsize=(10,6))
-    ax = fig.add_subplot(111, projection='3d')
-    ax.plot(r[:,0], r[:,1], r[:,2])
-    ax.set_title(title)
-    ax.set_xlabel("X (m)")
-    ax.set_ylabel("Y (m)")
-    ax.set_zlabel("Z (m)")
-    plt.show()
-```
-
----
 
 ### 4. Analysis of Particle Motion
 
