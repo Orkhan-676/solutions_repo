@@ -78,6 +78,46 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-introduction">1. Introduction</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-theoretical-background">2. Theoretical Background</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#graph-representation-of-circuits">Graph Representation of Circuits</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#series-and-parallel-simplification">Series and Parallel Simplification</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-computational-algorithm">3. Computational Algorithm</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-python-implementation">4. Python Implementation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-example-analyses">5. Example Analyses</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-simple-series">Example 1: Simple Series</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-parallel-resistors">Example 2: Parallel Resistors</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-nested-configuration">Example 3: Nested Configuration</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#6-performance-extensions">6. Performance &amp; Extensions</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#time-complexity">Time Complexity</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#potential-improvements">Potential Improvements</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#7-applications">7. Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#8-conclusion">8. Conclusion</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -171,58 +211,123 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
-<h1 id="problem-1-equivalent-resistance-using-graph-theory"><strong>Problem 1: Equivalent Resistance Using Graph Theory</strong></h1>
-<h2 id="motivation"><strong>Motivation</strong></h2>
-<p>Calculating equivalent resistance in electrical circuits can be complex for large networks. Using <strong>graph theory</strong>, we can model circuits as graphs where:<br/>
-- <strong>Nodes</strong> represent junctions.<br/>
-- <strong>Edges</strong> represent resistors (weights = resistance values).  </p>
-<p>This method simplifies circuit analysis and enables automated calculations.  </p>
+<h2 id="problem-1-equivalent-resistance-using-graph-theory"><strong>Problem 1: Equivalent Resistance Using Graph Theory</strong></h2>
+<h3 id="1-introduction">1. Introduction</h3>
+<p>Calculating the equivalent resistance in electrical circuits is a foundational task in physics and electrical engineering. Traditional techniques rely on applying series and parallel reduction rules manually, which becomes cumbersome with complex or nested configurations.</p>
+<p>Graph theory offers a robust alternative. By modeling a circuit as a graph—nodes as junctions and edges as resistors—we can simplify analysis using algorithms. This enables automation, optimization, and deeper understanding of how networked systems behave.</p>
 <hr/>
-<h2 id="theory"><strong>Theory</strong></h2>
-<h3 id="series-and-parallel-resistance"><strong>Series and Parallel Resistance</strong></h3>
+<h3 id="2-theoretical-background">2. Theoretical Background</h3>
+<h4 id="graph-representation-of-circuits">Graph Representation of Circuits</h4>
+<p>A resistor network can be modeled as an <strong>undirected weighted graph</strong>:</p>
 <ul>
-<li><strong>Series:</strong> <span class="arithmatex">\( R_{\text{eq}} = R_1 + R_2 + ... + R_n \)</span> </li>
-<li><strong>Parallel:</strong> <span class="arithmatex">\( \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + ... + \frac{1}{R_n} \)</span> </li>
+<li><strong>Vertices (nodes)</strong> represent junction points.</li>
+<li><strong>Edges</strong> represent resistors.</li>
+<li><strong>Weights</strong> on edges represent resistance values in ohms (Ω).</li>
 </ul>
-<h3 id="graph-based-approach"><strong>Graph-Based Approach</strong></h3>
-<ol>
-<li><strong>Build Graph:</strong> Represent resistors as weighted edges.  </li>
-<li><strong>Simplify Series Connections:</strong> Merge nodes with two connections.  </li>
-<li><strong>Simplify Parallel Connections:</strong> Replace multiple edges between two nodes with their equivalent resistance.  </li>
-<li><strong>Repeat Until One Resistance Remains.</strong><br/>
-<img alt="alt text" src="../image%20%281%29.png"/></li>
-</ol>
-<h2 id="example-cases"><strong>Example Cases</strong></h2>
-<table>
-<thead>
-<tr>
-<th>Circuit Type</th>
-<th>Given Resistors</th>
-<th>Equivalent Resistance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Series</strong></td>
-<td>4Ω, 6Ω</td>
-<td>10Ω</td>
-</tr>
-<tr>
-<td><strong>Parallel</strong></td>
-<td>4Ω, 6Ω</td>
-<td>2.4Ω</td>
-</tr>
-<tr>
-<td><strong>Complex</strong></td>
-<td>Mixed</td>
-<td>Computed iteratively</td>
-</tr>
-</tbody>
-</table>
+<h4 id="series-and-parallel-simplification">Series and Parallel Simplification</h4>
+<ul>
+<li><strong>Series:</strong> Two resistors <span class="arithmatex">\(R_1\)</span> and <span class="arithmatex">\(R_2\)</span> between the same pair of nodes with no branching → equivalent resistance:</li>
+</ul>
+<p>$$
+  R_{\text{eq}} = R_1 + R_2
+  $$</p>
+<ul>
+<li><strong>Parallel:</strong> Multiple resistors connecting the <em>same two nodes</em> →</li>
+</ul>
+<p>$$
+  \frac{1}{R_{\text{eq}}} = \sum \frac{1}{R_i}
+  $$</p>
+<p>This approach can be applied iteratively until a single equivalent resistance remains between the source and sink nodes.</p>
 <hr/>
-<h2 id="conclusion"><strong>Conclusion</strong></h2>
-<p>Using <strong>graph theory</strong>, we can systematically compute <strong>equivalent resistance</strong> in complex circuits, making circuit analysis more efficient and scalable. 🚀</p>
+<h3 id="3-computational-algorithm">3. Computational Algorithm</h3>
+<h4 id="overview">Overview</h4>
+<p>We'll develop an algorithm that:</p>
+<ul>
+<li>Builds a graph from the resistor network.</li>
+<li>Identifies and simplifies <strong>series</strong> and <strong>parallel</strong> patterns.</li>
+<li>Iteratively reduces the network to a single resistance between two terminals.</li>
+</ul>
+<hr/>
+<h3 id="4-python-implementation">4. Python Implementation</h3>
+<p>Below is a simplified implementation using Python and NetworkX:</p>
+<pre><code class="language-python">import networkx as nx
+
+def combine_parallel_edges(G):
+    to_add = []
+    to_remove = []
+    for u, v in list(G.edges()):
+        edges = list(G.get_edge_data(u, v).values())
+        if len(edges) &gt; 1:
+            R_eq = 1 / sum(1/edge['resistance'] for edge in edges)
+            to_add.append((u, v, R_eq))
+            to_remove.append((u, v))
+    for u, v in to_remove:
+        G.remove_edges_from([(u, v)])
+    for u, v, R in to_add:
+        G.add_edge(u, v, resistance=R)
+
+def combine_series_nodes(G, terminals):
+    for node in list(G.nodes()):
+        if G.degree(node) == 2 and node not in terminals:
+            neighbors = list(G.neighbors(node))
+            if len(neighbors) == 2:
+                u, v = neighbors
+                R1 = G.edges[node, u]['resistance']
+                R2 = G.edges[node, v]['resistance']
+                G.remove_node(node)
+                G.add_edge(u, v, resistance=R1 + R2)
+
+def calculate_equivalent_resistance(G, start, end):
+    while True:
+        prev_edges = G.number_of_edges()
+        combine_series_nodes(G, [start, end])
+        combine_parallel_edges(G)
+        if G.number_of_edges() == prev_edges:
+            break
+    return G.edges[start, end]['resistance']
+</code></pre>
+<hr/>
+<h3 id="5-example-analyses">5. Example Analyses</h3>
+<h4 id="example-1-simple-series">Example 1: Simple Series</h4>
+<p><img alt="alt text" src="../image.png"/></p>
+<ul>
+<li>Start: A, End: C</li>
+<li>Result: 5Ω</li>
+</ul>
+<h4 id="example-2-parallel-resistors">Example 2: Parallel Resistors</h4>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<ul>
+<li>Result: <span class="arithmatex">\(\frac{1}{1/4 + 1/6} = 2.4Ω\)</span></li>
+</ul>
+<h4 id="example-3-nested-configuration">Example 3: Nested Configuration</h4>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<ul>
+<li>Requires both series and parallel simplification.</li>
+<li>Algorithm handles this iteratively.</li>
+</ul>
+<hr/>
+<h3 id="6-performance-extensions">6. Performance &amp; Extensions</h3>
+<h4 id="time-complexity">Time Complexity</h4>
+<ul>
+<li>Depends on the number of nodes and edges.</li>
+<li>Each iteration reduces either nodes or edges → efficient for sparse graphs.</li>
+</ul>
+<h4 id="potential-improvements">Potential Improvements</h4>
+<ul>
+<li>Use <strong>Union-Find</strong> for connected components.</li>
+<li>Extend to <strong>AC circuits</strong> with complex impedances.</li>
+<li>Add <strong>GUI or visualization</strong> using <code>matplotlib</code>.</li>
+</ul>
+<hr/>
+<h3 id="7-applications">7. Applications</h3>
+<ul>
+<li><strong>Circuit simulation tools</strong>: SPICE, LTSpice use similar graph-based simplifications.</li>
+<li><strong>Network analysis</strong> in microchip design.</li>
+<li><strong>Robust design</strong> in power grids, where equivalent impedance impacts performance.</li>
+</ul>
+<hr/>
+<h3 id="8-conclusion">8. Conclusion</h3>
+<p>We demonstrated how graph theory provides an elegant and scalable solution for calculating equivalent resistance. This method not only simplifies hand analysis but also lays the foundation for algorithmic simulations of real-world circuits, proving essential in modern electrical and computer engineering.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
