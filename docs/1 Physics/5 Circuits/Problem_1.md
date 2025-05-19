@@ -37,21 +37,9 @@ This approach can be applied iteratively until a single equivalent resistance re
 
 ---
 
-### 3. Computational Algorithm
-
-#### Overview
-
-We'll develop an algorithm that:
-
-* Builds a graph from the resistor network.
-* Identifies and simplifies **series** and **parallel** patterns.
-* Iteratively reduces the network to a single resistance between two terminals.
-
----
 
 
-
-### 4. Python Implementation
+### 3. Python Implementation
 
 Below is a simplified implementation using Python and NetworkX:
 
@@ -95,7 +83,7 @@ def calculate_equivalent_resistance(G, start, end):
 
 ---
 
-### 5. Example Analyses
+### 4. Example Analyses
 
 #### Example 1: Simple Series
 
@@ -119,7 +107,7 @@ def calculate_equivalent_resistance(G, start, end):
 
 ---
 
-### 6. Performance & Extensions
+### 5. Performance & Extensions
 
 #### Time Complexity
 
@@ -134,7 +122,7 @@ def calculate_equivalent_resistance(G, start, end):
 
 ---
 
-### 7. Applications
+### 6. Applications
 
 * **Circuit simulation tools**: SPICE, LTSpice use similar graph-based simplifications.
 * **Network analysis** in microchip design.
@@ -142,6 +130,6 @@ def calculate_equivalent_resistance(G, start, end):
 
 ---
 
-### 8. Conclusion
+### 7. Conclusion
 
 We demonstrated how graph theory provides an elegant and scalable solution for calculating equivalent resistance. This method not only simplifies hand analysis but also lays the foundation for algorithmic simulations of real-world circuits, proving essential in modern electrical and computer engineering.
