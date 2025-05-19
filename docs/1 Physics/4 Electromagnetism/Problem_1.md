@@ -1,216 +1,137 @@
-# Problem 1
-# **Problem 1: Simulating the Effects of the Lorentz Force**  
+## **Problem 1: Simulating the Effects of the Lorentz Force**
 
+### 1. Introduction
 
-## **1. Introduction**
-The **Lorentz force** governs how charged particles move in electric and magnetic fields, playing a central role in systems such as particle accelerators, mass spectrometers, and plasma traps.
-This problem investigates the motion of a single charged particle under various configurations of **electric** (𝐸) and **magnetic** (B) fields.
-Through simulation, we visualize key physical behaviors such as **circular motion, helical trajectories, and E×B drift.** 
+The Lorentz force is a fundamental concept in electromagnetism that explains how charged particles move under the influence of electric and magnetic fields. It is essential in fields such as **plasma physics**, **mass spectrometry**, **cyclotron design**, and **astrophysics**.
 
+In this problem, we explore how different field configurations affect the motion of a charged particle by implementing and visualizing simulations of particle trajectories.
 
+---
 
-## **2. Theoretical Background**
-**Lorentz Force Equation**
-The force acting on a charged particle is defined by:
-                      
+### 2. Theoretical Background
+
+#### Lorentz Force Equation
+
+The force acting on a charged particle is given by:
+
+$$
+\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})
+$$
 
 Where:
 
+* $q$: particle charge (C),
+* $\vec{E}$: electric field vector (V/m),
+* $\vec{B}$: magnetic field vector (T),
+* $\vec{v}$: velocity of the particle (m/s).
 
+#### Motion Scenarios
 
-From Newton’s second law:
-\[\vec{a}= \frac{\vec{F}}{m}\]
+* **Only Magnetic Field ($\vec{E} = 0$)** → Circular or helical motion.
+* **Electric + Magnetic Field** → Spiral, accelerated, or drifting motion depending on orientation.
+* **Crossed Fields ($\vec{E} \perp \vec{B}$)** → E×B drift.
 
-we can iteratively compute the particle’s velocity and position.
+---
 
-## **Computational Simulation**
+### 3. Computational Simulation
 
+We will:
 
+* Simulate the motion of a charged particle under different field conditions.
+* Use the Euler method for numerical integration.
+* Allow user-defined parameters (mass, charge, initial velocity, field strengths).
 
-4. Field Configurations and Trajectories
-1. Uniform Magnetic Field
-𝐸
-⃗
-=
-0
-,
-𝐵
-⃗
-=
-(
-0
-,
-0
-,
-1
-×
-10
-−
-3
-)
- T
-E
- =0, 
-B
- =(0,0,1×10 
-−3
- ) T
-Initial velocity:
+#### Python Implementation
 
-𝑣
-⃗
-0
-=
-(
-1
-×
-10
-5
-,
- 
-0
-,
- 
-0
-)
- m/s
-v
-  
-0
-​
- =(1×10 
-5
- , 0, 0) m/s
-2. Electric and Magnetic Fields Combined
-𝐸
-⃗
-=
-(
-1
-×
-10
-3
-,
- 
-0
-,
- 
-0
-)
- V/m
-E
- =(1×10 
-3
- , 0, 0) V/m
-3. Crossed Fields
-𝐸
-⃗
-=
-(
-0
-,
- 
-1
-×
-10
-3
-,
- 
-0
-)
-,
-𝐵
-⃗
-=
-(
-0
-,
- 
-0
-,
- 
-1
-×
-10
-−
-3
-)
-E
- =(0, 1×10 
-3
- , 0), 
-B
- =(0, 0, 1×10 
-−3
- )
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
+# Particle properties
+q = 1.6e-19       # Charge (Coulombs)
+m = 9.11e-31      # Mass (kg) - default is electron
+dt = 1e-11        # Time step (s)
+steps = 1000      # Number of steps
 
+def simulate_lorentz_motion(v0, E, B, title="Lorentz Force Motion"):
+    r = np.zeros((steps, 3))
+    v = np.zeros((steps, 3))
+    v[0] = v0
 
-**Observed Phenomena**
--**Circular Motion**
+    for i in range(steps - 1):
+        F = q * (E + np.cross(v[i], B))
+        a = F / m
+        v[i+1] = v[i] + a * dt
+        r[i+1] = r[i] + v[i+1] * dt
 
- Occurs under a uniform magnetic field with perpendicular velocity.
+    # Visualization
+    fig = plt.figure(figsize=(10,6))
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(r[:,0], r[:,1], r[:,2])
+    ax.set_title(title)
+    ax.set_xlabel("X (m)")
+    ax.set_ylabel("Y (m)")
+    ax.set_zlabel("Z (m)")
+    plt.show()
+```
 
- Radius of curvature (Larmor radius):
+---
 
-𝑟
-𝐿
-=
-𝑚
-𝑣
-∣
-𝑞
-𝐵
-∣
-r 
-L
-​
- = 
-∣qB∣
-mv
-​
- 
-Helical Motion
+### 4. Analysis of Particle Motion
 
-Happens when there's velocity along the magnetic field direction.
+#### 1. Magnetic Field Only (Helical Motion)
 
-E × B Drift
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 1e5], E=[0, 0, 0], B=[0, 0, 1], title="Uniform Magnetic Field (Helical Motion)")
+```
 
-In crossed fields, the particle drifts perpendicular to both 
-𝐸
-⃗
-E
-  and 
-𝐵
-⃗
-B
- :
+* Circular motion due to Lorentz force perpendicular to velocity.
+* Spiral trajectory when velocity has a component along $\vec{B}$.
 
-𝑣
-⃗
-𝑑
-=
-𝐸
-⃗
-×
-𝐵
-⃗
-𝐵
-2
-v
-  
-d
-​
- = 
-B 
-2
- 
-E
- × 
-B
- 
-​
- 
-## **Conclusion**
-This simulation provides insight into the motion of charged particles under electromagnetic forces.
-Key dynamics such as **Larmor radius, helical paths, and drift velocity** illustrate fundamental principles behind real-world systems like accelerators and magnetic traps.
+#### 2. Crossed Fields (E ⊥ B → Drift Motion)
+
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 0], E=[0, 1e3, 0], B=[0, 0, 1], title="Crossed E and B Fields")
+```
+
+* E×B drift observed; particle moves perpendicular to both fields.
+
+#### 3. Parallel E and B Fields (Acceleration + Rotation)
+
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 0], E=[0, 0, 1e3], B=[0, 0, 1], title="Combined E and B Fields")
+```
+
+* Particle accelerates along the direction of the electric field while also rotating due to magnetic field.
+
+---
+
+### 5. Real-World Applications
+
+#### 🧪 Particle Accelerators
+
+* Charged particles are accelerated using electric fields and bent in circular paths using magnetic fields (e.g., **cyclotron**, **LHC**).
+
+#### 🔬 Mass Spectrometers
+
+* Use magnetic fields to separate ions based on their mass-to-charge ratio.
+
+#### 🔥 Plasma Confinement (Tokamaks)
+
+* Use strong magnetic fields to trap high-energy plasma for fusion.
+
+---
+
+### 6. Extensions & Further Research
+
+🔹 **Time-varying fields**: Introduce oscillating electric or magnetic fields.
+🔹 **Non-uniform fields**: Simulate magnetic field gradients (e.g., magnetic bottles).
+🔹 **Relativistic particles**: Extend to high-speed particles with relativistic mass correction.
+🔹 **Multiple particles**: Study interactions in a plasma simulation with collisions.
+
+---
+
+### 7. Conclusion
+
+Through these simulations, we visualized how charged particles behave under various electric and magnetic field configurations. These patterns — from circular motion to drift — reveal the underlying dynamics of devices such as particle accelerators and magnetic traps. The Lorentz force continues to be central in designing modern technologies across physics and engineering.
