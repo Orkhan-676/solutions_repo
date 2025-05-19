@@ -1,104 +1,141 @@
-# Problem 1
-# **Problem 1: Interference Patterns on a Water Surface**  
+Teşekkürler, gönderdiğin örnek çok yardımcı oldu! Bu örnek yapı oldukça düzenli, akademik ve bölümlere ayrılmış: giriş, teori, simülasyon, analiz, uygulamalar, genişletmeler ve sonuç gibi başlıklarla güzel bir format izliyor. Şimdi senin için **Lorentz kuvveti** ödevini aynı tarzda, benzer başlık yapısıyla aşağıda sunuyorum:
 
 ---
 
-## **1. Introduction**  
+## **Problem 1: Simulating the Effects of the Lorentz Force**
 
-Interference is a fundamental wave phenomenon that occurs when two or more waves overlap. On a water surface, ripples from multiple sources interact, creating patterns of constructive and destructive interference.  
+### 1. Introduction
 
-This problem explores **wave interference from multiple point sources**, arranged at the vertices of a **regular polygon**. The goal is to visualize and understand how the superposition of waves results in complex patterns.  
+The Lorentz force is a fundamental concept in electromagnetism that explains how charged particles move under the influence of electric and magnetic fields. It is essential in fields such as **plasma physics**, **mass spectrometry**, **cyclotron design**, and **astrophysics**.
 
----
-
-## **2. Theoretical Background**  
-
-### **Single Wave Equation**  
-
-A circular wave propagating from a single point source located at \(\mathbf{r}_i\) is given by:
-
-\[
-y_i(\mathbf{r}, t) = A \cos(k d_i - \omega t + \phi)
-\]
-
-where:  
-- \( A \) = amplitude of the wave,  
-- \( k = \frac{2\pi}{\lambda} \) = wave number (related to wavelength \( \lambda \)),  
-- \( \omega = 2\pi f \) = angular frequency (related to frequency \( f \)),  
-- \( d_i = |\mathbf{r} - \mathbf{r}_i| \) = distance from source \( i \) to point \( \mathbf{r} \),  
-- \( \phi \) = initial phase of the wave.  
+In this problem, we explore how different field configurations affect the motion of a charged particle by implementing and visualizing simulations of particle trajectories.
 
 ---
 
-### **Superposition of Multiple Waves**  
+### 2. Theoretical Background
 
-If there are \( N \) sources, each emitting a wave, the total displacement at a point \( \mathbf{r} \) is:
+#### Lorentz Force Equation
 
-\[
-y(\mathbf{r}, t) = \sum_{i=1}^{N} A \cos(k d_i - \omega t + \phi)
-\]
+The force acting on a charged particle is given by:
 
-This sum determines the **interference pattern** on the water surface.  
+$$
+\vec{F} = q (\vec{E} + \vec{v} \times \vec{B})
+$$
 
-- **Constructive Interference**: Occurs when waves add up (\( \Delta \phi = 0, 2\pi, 4\pi, ... \)).  
-- **Destructive Interference**: Occurs when waves cancel out (\( \Delta \phi = \pi, 3\pi, 5\pi, ... \)).  
+Where:
 
-By positioning sources at **regular polygon vertices**, we observe **symmetrical patterns** that depend on the number of sources.
+* $q$: particle charge (C),
+* $\vec{E}$: electric field vector (V/m),
+* $\vec{B}$: magnetic field vector (T),
+* $\vec{v}$: velocity of the particle (m/s).
 
----
+#### Motion Scenarios
 
-## **3. Computational Simulation**  
-
-We will:  
-- Choose a **regular polygon** (e.g., equilateral triangle, square, pentagon).  
-- Generate waves from **each vertex** using the superposition principle.  
-- Visualize **constructive and destructive interference** with color maps.
-
-### **Python Implementation**  
-![alt text](image.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-
-## **4. Analysis of Interference Patterns**  
-
-### **1. Triangle (\(N = 3\))**  
-- Forms a **sixfold symmetric pattern** with alternating bright and dark regions.  
-- Strong central interference due to wave overlap.  
-
-### **2. Square (\(N = 4\))**  
-- Produces a **checkerboard-like interference pattern** with symmetry along diagonals.  
-- Alternating constructive/destructive zones between sources.  
-
-### **3. Pentagon (\(N = 5\))**  
-- Creates a more **intricate star-like pattern** due to additional wave interactions.  
-- Shows radial symmetry with high interference at center.  
+* **Only Magnetic Field ($\vec{E} = 0$)** → Circular or helical motion.
+* **Electric + Magnetic Field** → Spiral, accelerated, or drifting motion depending on orientation.
+* **Crossed Fields ($\vec{E} \perp \vec{B}$)** → E×B drift.
 
 ---
 
-## **5. Real-World Applications**  
+### 3. Computational Simulation
 
-1. **Water Waves** 🌊  
-   - Explains **ripples in ponds** when multiple droplets fall.  
-   - Helps in **harbor design** to reduce unwanted wave interference.  
+We will:
 
-2. **Acoustics & Sound Waves** 🎶  
-   - Used in **concert hall design** to optimize sound distribution.  
-   - Explains **noise cancellation** in headphones.  
+* Simulate the motion of a charged particle under different field conditions.
+* Use the Euler method for numerical integration.
+* Allow user-defined parameters (mass, charge, initial velocity, field strengths).
 
-3. **Optical Interference** 🔬  
-   - Similar principles apply to **laser interferometry** (LIGO for gravitational waves).  
-   - Used in **holography** and **thin-film coatings** for anti-reflective glass.  
+#### Python Implementation
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Particle properties
+q = 1.6e-19       # Charge (Coulombs)
+m = 9.11e-31      # Mass (kg) - default is electron
+dt = 1e-11        # Time step (s)
+steps = 1000      # Number of steps
+
+def simulate_lorentz_motion(v0, E, B, title="Lorentz Force Motion"):
+    r = np.zeros((steps, 3))
+    v = np.zeros((steps, 3))
+    v[0] = v0
+
+    for i in range(steps - 1):
+        F = q * (E + np.cross(v[i], B))
+        a = F / m
+        v[i+1] = v[i] + a * dt
+        r[i+1] = r[i] + v[i+1] * dt
+
+    # Visualization
+    fig = plt.figure(figsize=(10,6))
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(r[:,0], r[:,1], r[:,2])
+    ax.set_title(title)
+    ax.set_xlabel("X (m)")
+    ax.set_ylabel("Y (m)")
+    ax.set_zlabel("Z (m)")
+    plt.show()
+```
 
 ---
 
-## **6. Extensions & Further Research**  
+### 4. Analysis of Particle Motion
 
-🔹 **Varying Phase Differences:** Explore how different initial phases \( \phi \) change the patterns.  
-🔹 **Non-Coherent Sources:** Introduce randomness in phase to simulate real-world variations.  
-🔹 **3D Simulations:** Extend to surface ripples in **fluid dynamics studies**.  
+#### 1. Magnetic Field Only (Helical Motion)
+
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 1e5], E=[0, 0, 0], B=[0, 0, 1], title="Uniform Magnetic Field (Helical Motion)")
+```
+
+* Circular motion due to Lorentz force perpendicular to velocity.
+* Spiral trajectory when velocity has a component along $\vec{B}$.
+
+#### 2. Crossed Fields (E ⊥ B → Drift Motion)
+
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 0], E=[0, 1e3, 0], B=[0, 0, 1], title="Crossed E and B Fields")
+```
+
+* E×B drift observed; particle moves perpendicular to both fields.
+
+#### 3. Parallel E and B Fields (Acceleration + Rotation)
+
+```python
+simulate_lorentz_motion(v0=[1e5, 0, 0], E=[0, 0, 1e3], B=[0, 0, 1], title="Combined E and B Fields")
+```
+
+* Particle accelerates along the direction of the electric field while also rotating due to magnetic field.
 
 ---
 
-## **7. Conclusion**  
+### 5. Real-World Applications
 
-By simulating **interference from multiple sources**, we visualized **wave superposition patterns** for **different regular polygons**. These patterns reveal the beauty and complexity of wave physics, with applications in **acoustics, optics, and engineering**.  
+#### 🧪 Particle Accelerators
+
+* Charged particles are accelerated using electric fields and bent in circular paths using magnetic fields (e.g., **cyclotron**, **LHC**).
+
+#### 🔬 Mass Spectrometers
+
+* Use magnetic fields to separate ions based on their mass-to-charge ratio.
+
+#### 🔥 Plasma Confinement (Tokamaks)
+
+* Use strong magnetic fields to trap high-energy plasma for fusion.
+
+---
+
+### 6. Extensions & Further Research
+
+🔹 **Time-varying fields**: Introduce oscillating electric or magnetic fields.
+🔹 **Non-uniform fields**: Simulate magnetic field gradients (e.g., magnetic bottles).
+🔹 **Relativistic particles**: Extend to high-speed particles with relativistic mass correction.
+🔹 **Multiple particles**: Study interactions in a plasma simulation with collisions.
+
+---
+
+### 7. Conclusion
+
+Through these simulations, we visualized how charged particles behave under various electric and magnetic field configurations. These patterns — from circular motion to drift — reveal the underlying dynamics of devices such as particle accelerators and magnetic traps. The Lorentz force continues to be central in designing modern technologies across physics and engineering.
