@@ -43,45 +43,7 @@ This approach can be applied iteratively until a single equivalent resistance re
 
 Below is a simplified implementation using Python and NetworkX:
 
-```python
-import networkx as nx
-
-def combine_parallel_edges(G):
-    to_add = []
-    to_remove = []
-    for u, v in list(G.edges()):
-        edges = list(G.get_edge_data(u, v).values())
-        if len(edges) > 1:
-            R_eq = 1 / sum(1/edge['resistance'] for edge in edges)
-            to_add.append((u, v, R_eq))
-            to_remove.append((u, v))
-    for u, v in to_remove:
-        G.remove_edges_from([(u, v)])
-    for u, v, R in to_add:
-        G.add_edge(u, v, resistance=R)
-
-def combine_series_nodes(G, terminals):
-    for node in list(G.nodes()):
-        if G.degree(node) == 2 and node not in terminals:
-            neighbors = list(G.neighbors(node))
-            if len(neighbors) == 2:
-                u, v = neighbors
-                R1 = G.edges[node, u]['resistance']
-                R2 = G.edges[node, v]['resistance']
-                G.remove_node(node)
-                G.add_edge(u, v, resistance=R1 + R2)
-
-def calculate_equivalent_resistance(G, start, end):
-    while True:
-        prev_edges = G.number_of_edges()
-        combine_series_nodes(G, [start, end])
-        combine_parallel_edges(G)
-        if G.number_of_edges() == prev_edges:
-            break
-    return G.edges[start, end]['resistance']
-```
-
----
+![alt text](<generate a visual representation of the Python code provided, showing the process of combining parallel and series resistances in a network graph and the final equivalent resistance calculation.png>)
 
 ### 4. Example Analyses
 
@@ -104,21 +66,6 @@ def calculate_equivalent_resistance(G, start, end):
 
 * Requires both series and parallel simplification.
 * Algorithm handles this iteratively.
-
----
-
-### 5. Performance & Extensions
-
-#### Time Complexity
-
-* Depends on the number of nodes and edges.
-* Each iteration reduces either nodes or edges → efficient for sparse graphs.
-
-#### Potential Improvements
-
-* Use **Union-Find** for connected components.
-* Extend to **AC circuits** with complex impedances.
-* Add **GUI or visualization** using `matplotlib`.
 
 ---
 
