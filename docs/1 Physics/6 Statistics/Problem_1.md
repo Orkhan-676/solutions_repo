@@ -44,19 +44,16 @@ Here are histograms of sample means for each distribution and each sample size:
 #### **1. Uniform Distribution (0, 1)**
 
 * As the sample size increases, the distribution of sample means becomes more bell-shaped.
-  ![Uniform CLT Simulation](attachment1)
   ![alt text](Uniform_CLT_HighRes.png)
 
 #### **2. Exponential Distribution (λ = 1)**
 
 * Initially skewed, but larger samples result in near-normal distributions.
-  ![Exponential CLT Simulation](attachment2)
   ![alt text](Exponential_CLT_HighRes.png)
 
 #### **3. Binomial Distribution (n=10, p=0.5)**
 
 * Even though discrete, the sample means tend to normality with large samples.
-  ![Binomial CLT Simulation](attachment3)
   ![alt text](Binomial_CLT_HighRes.png)
 
 ---
