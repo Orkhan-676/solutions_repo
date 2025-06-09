@@ -1,6 +1,5 @@
 
-
-# Measuring Earth's Gravitational Acceleration with a Pendulum
+# Problem 1: Measuring Earth's Gravitational Acceleration with a Pendulum
 
 ##  Objective
 
